@@ -1,31 +1,43 @@
-import React, { useEffect } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import axios from 'axios';
 
 
-function AddGoalsPage() {
-  console.log('in AddGoalsPage()');
-
+function AddGoalPage() {
+  console.log('in AddGoalPage()');
+  const [addGoal, setAddGoal] = useState('');
   const history = useHistory();
+  const dispatch = useDispatch();
 
 
 
   const handleGoalsClick = () => {
-    // dispatch({ 
-    //   type: 'FETCH_MOVIE',
-    //   payload: movie.id
-    // });
-    // dispatch({
-    //   type: 'FETCH_GENRE',
-    //   payload: movie.id
-    // });
-    // console.log('genre id:', movie.id);
     history.push('/goals');
+    
+  }
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+      dispatch({
+        type: 'CREATE_GOAL',
+        payload: addGoal        
+    });
   }
 
   return (
     <>
-      <p>Add Goals on this Page Someday!!</p>
+      <form>
+        <h2>Add Goals Here, my gai!</h2>
+        <label htmlFor="addGoal"></label>
+        <input
+          type="text"
+          name="add new goal here"
+          value={addGoal}
+          onChange={(event) => setAddGoal(event.target.value)} />
+        <button onClick={handleSubmit}
+        >Submit New Goal</button>
+      </form>
       <button onClick={handleGoalsClick}>Back to Goals</button>
     </>
   );
@@ -34,7 +46,7 @@ function AddGoalsPage() {
 }
 
 // this allows us to use <App /> in index.js
-export default AddGoalsPage;
+export default AddGoalPage;
 
 
 

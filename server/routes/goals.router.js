@@ -2,7 +2,7 @@ const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
 
-// Get route that uses SQL query to 
+// GET route that uses SQL query to 
 // bring the user's goals to the GoalsPage
 router.get('/', (req, res) => {
   const sqlQuery = `SELECT * FROM goals 
@@ -20,11 +20,28 @@ const sqlValues = [req.user.id];
     })
 });
 
-/**
- * POST route template
- */
+// POST route that uses SQL query to insert 
+// a new goal into the db
 router.post('/', (req, res) => {
-  // POST route code here
+  console.log('req.body:', req.body);
+
+  const insertGoalQuery =`
+  INSERT INTO "goals" ("text", "user_id", "inserted_at")
+  VALUES ($1, $2, $3)
+  RETURNING "id";
+  `;
+  pool.query(insertGoalQuery, [
+    req.body.text
+  
+  ])
+  .then((result) => {
+    console.log('New Goal Id:', result.rows[0].id); 
+  })
+  .catch((err) => {
+    console.log(err);
+    res.sendStatus(500);
+  });
+
 });
 
 module.exports = router;

@@ -20,9 +20,23 @@ function* fetchGoals() {
   }
 }
 
+function* createGoal() {
+  console.log('createGoal saga function, doodz!');
+  // POST new goal to DB
+  // try {
+  //   console.log('createGoal action.payload is:',action.payload);
+  //   const response = yield axios({
+  //     method: 'POST',
+  //     url: '/api/goals',
+
+  //   })
+  // }
+}
+
 function* goalsSaga() {
   // corresponds to dispatch sent from component GoalsPage.jsx
   yield takeLatest('FETCH_GOALS', fetchGoals);
+  yield takeLatest('CREATE_GOAL', createGoal);
 }
 
 export default goalsSaga;

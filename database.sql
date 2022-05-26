@@ -45,6 +45,10 @@ select * from "goals";
 
 select * from "user";
 
+INSERT INTO "goals" ("text", "user_id", "inserted_at")
+  VALUES ($1, $2, $3)
+  RETURNING "id";
+
 
 
 
