@@ -1,13 +1,34 @@
-import React from 'react';
-import {useSelector} from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+// import { useHistory } from 'react-router-dom';
+
 
 
 function GoalsPage() {
-  // this component doesn't do much to start, just renders some user reducer info to the DOM
-  // const user = useSelector((store) => store.user);
+  console.log('in GoalsPage()');
+ 
+  const goals = useSelector((store) => store.goals);
+  // const history = useHistory();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch({
+      type: 'FETCH_GOALS',
+    });
+    console.log('/goals');
+  }, []);
+
+
   return (
     <div className="container">
-     <p>Yeah Dude</p>
+      <>
+        <h5>Goals Page!!!</h5>
+        <ul>
+          {goals && goals.map((goals) => {
+            return (<li>{goals.text}</li>)
+          })}
+        </ul>
+      </>
     </div>
   );
 }
