@@ -15,6 +15,8 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserPage/UserPage';
+import GoalsPage from '../GoalsPage/GoalsPage';
+
 import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
@@ -58,6 +60,14 @@ function App() {
             path="/user"
           >
             <UserPage />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // logged in shows GoalsPage else shows LoginPage
+            exact
+            path="/goals"
+          >
+            <GoalsPage />
           </ProtectedRoute>
 
           <ProtectedRoute
