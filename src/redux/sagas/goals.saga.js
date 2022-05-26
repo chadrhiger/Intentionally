@@ -5,6 +5,7 @@ import axios from 'axios';
 
 
 function* fetchGoals() {
+  console.log('in fetchGoals()');
   // get all goals from the DB
   try {
       const goals = yield axios.get('/api/goals');

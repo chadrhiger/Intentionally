@@ -2,12 +2,10 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 // import { useHistory } from 'react-router-dom';
 
-
-
 function GoalsPage() {
   console.log('in GoalsPage()');
  
-  const goals = useSelector((store) => store.goals);
+  const goals = useSelector((store) => store.goalsReducer);
   // const history = useHistory();
   const dispatch = useDispatch();
 
@@ -18,14 +16,13 @@ function GoalsPage() {
     console.log('/goals');
   }, []);
 
-
   return (
     <div className="container">
       <>
         <h5>Goals Page!!!</h5>
         <ul>
-          {goals && goals.map((goals) => {
-            return (<li>{goals.text}</li>)
+          {goals.map((goal) => {
+            return (<li key={goal.id}>{goal.text}</li>)
           })}
         </ul>
       </>
