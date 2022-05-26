@@ -18,7 +18,7 @@ function GoalsPage() {
   }, []);
 
   const handleAddGoalClick= () => {
-    history.push('/')
+    history.push('/addGoal')
   }
 
   return (
@@ -31,7 +31,7 @@ function GoalsPage() {
           })}
         </ul>
         <button 
-        // onClick={history.push('/addGoal')}
+        onClick={handleAddGoalClick}
         >Add Goal!</button>
 
       </>
