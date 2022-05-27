@@ -23,6 +23,8 @@ function AddGoalPage() {
         type: 'CREATE_GOAL',
         payload: addGoal        
     });
+    history.push('/goals');
+
   }
 
   return (
@@ -41,8 +43,6 @@ function AddGoalPage() {
       <button onClick={handleGoalsClick}>Back to Goals</button>
     </>
   );
-
-
 }
 
 // this allows us to use <App /> in index.js

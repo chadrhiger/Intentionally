@@ -24,15 +24,13 @@ const sqlValues = [req.user.id];
 // a new goal into the db
 router.post('/', (req, res) => {
   console.log('req.body:', req.body);
-
   const insertGoalQuery =`
-  INSERT INTO "goals" ("text", "user_id", "inserted_at")
-  VALUES ($1, $2, $3)
+  INSERT INTO "goals" ("text", "user_id")
+  VALUES ($1, $2)
   RETURNING "id";
   `;
   pool.query(insertGoalQuery, [
-    req.body.text
-  
+    req.body.text, req.user.id
   ])
   .then((result) => {
     console.log('New Goal Id:', result.rows[0].id); 

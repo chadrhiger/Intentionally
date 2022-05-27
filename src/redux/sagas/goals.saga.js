@@ -8,29 +8,35 @@ function* fetchGoals() {
   console.log('in fetchGoals()');
   // get all goals from the DB
   try {
-      const goals = yield axios.get('/api/goals');
-      console.log('get all:', goals.data);
-      yield put({
-        // corresponds to GoalsReducer
-          type: 'SET_GOALS',
-          payload: goals.data
-      });
+    const goals = yield axios.get('/api/goals');
+    console.log('get all:', goals.data);
+    yield put({
+      // corresponds to GoalsReducer
+      type: 'SET_GOALS',
+      payload: goals.data
+    });
   } catch {
-      console.log('get all goals error');
+    console.log('get all goals error');
   }
 }
 
-function* createGoal() {
+function* createGoal(action) {
   console.log('createGoal saga function, doodz!');
   // POST new goal to DB
-  // try {
-  //   console.log('createGoal action.payload is:',action.payload);
-  //   const response = yield axios({
-  //     method: 'POST',
-  //     url: '/api/goals',
-
-  //   })
-  // }
+  try {
+    console.log('createGoal action.payload is:', action.payload);
+    const response = yield axios({
+      method: 'POST',
+      url: '/api/goals',
+      data: { text: action.payload},
+    });
+    console.log('createGoal response is:', response);
+    yield put({
+      type: 'FETCH_GOALS',
+    });
+  } catch {
+    console.log('POST goals error');
+  }
 }
 
 function* goalsSaga() {
