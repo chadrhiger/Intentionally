@@ -16,6 +16,7 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserPage/UserPage';
 import GoalsPage from '../GoalsPage/GoalsPage';
+import AddGoalPage from '../AddGoalPage/AddGoalPage';
 
 import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
@@ -68,6 +69,14 @@ function App() {
             path="/goals"
           >
             <GoalsPage />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // logged in shows GoalsPage else shows LoginPage
+            exact
+            path="/addGoal"
+          >
+            <AddGoalPage />
           </ProtectedRoute>
 
           <ProtectedRoute
