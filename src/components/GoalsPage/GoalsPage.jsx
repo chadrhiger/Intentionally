@@ -5,7 +5,7 @@ import { useHistory } from 'react-router-dom';
 
 function GoalsPage() {
   console.log('in GoalsPage()');
- 
+
   const goals = useSelector((store) => store.goalsReducer);
   const history = useHistory();
   const dispatch = useDispatch();
@@ -17,7 +17,7 @@ function GoalsPage() {
     console.log('/goals');
   }, []);
 
-  const handleAddGoalClick= () => {
+  const handleAddGoalClick = () => {
     history.push('/addGoal')
   }
 
@@ -27,11 +27,18 @@ function GoalsPage() {
         <h5>Goals Page!!!</h5>
         <ul>
           {goals.map((goal) => {
-            return (<li key={goal.id}>{goal.text}</li>)
+            return (
+              <>
+                <li key={goal.id}>{goal.text}</li>
+                <button >edit</button>
+                <button>delete</button>
+
+              </>
+            )
           })}
         </ul>
-        <button 
-        onClick={handleAddGoalClick}
+        <button
+          onClick={handleAddGoalClick}
         >Add Goal!</button>
 
       </>

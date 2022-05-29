@@ -39,10 +39,24 @@ function* createGoal(action) {
   }
 }
 
+function* deleteGoal(action) {
+  try {
+    yield axios({
+      method: 'DELETE',
+      url: `/goals/${action.payload}`
+    })
+    yield put({
+      type: 'DELETE_GOAL'
+    })
+  } catch (err) {
+    console.log(err)
+  }}
+
 function* goalsSaga() {
   // corresponds to dispatch sent from component GoalsPage.jsx
   yield takeLatest('FETCH_GOALS', fetchGoals);
   yield takeLatest('CREATE_GOAL', createGoal);
+  yield takeLatest('DELETE_GOAL', deleteGoal);
 }
 
 export default goalsSaga;
