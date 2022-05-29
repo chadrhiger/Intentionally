@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-
+import GoalItem from '../GoalItem/GoalItem';
 
 function GoalsPage() {
   console.log('in GoalsPage()');
@@ -21,6 +21,15 @@ function GoalsPage() {
     history.push('/addGoal')
   }
 
+  // const handleDelete = () => {
+  //   console.log('goal.id', goals.id);
+
+  //   dispatch({
+  //     type: 'DELETE_GOAL',
+  //     payload: goals.id,
+  //   })
+  // }
+
   return (
     <div className="container">
       <>
@@ -29,10 +38,13 @@ function GoalsPage() {
           {goals.map((goal) => {
             return (
               <>
-                <li key={goal.id}>{goal.text}</li>
-                <button >edit</button>
-                <button>delete</button>
-
+                {/* <li key={goal.id}>{goal.text}</li> */}
+                {/* <button >edit</button> */}
+                <GoalItem key={goal.id} goal={goal}/>
+                {/* <button
+                  onClick={() => handleDelete()}>
+                  delete
+                </button> */}
               </>
             )
           })}
