@@ -42,4 +42,23 @@ router.post('/', (req, res) => {
 
 });
 
+
+router.delete('/:id', (req, res) => {
+  const sqlText = `
+    DELETE FROM goals
+      WHERE id = $1
+  `
+  const sqlValues = [
+    req.params.id
+  ]
+  pool.query(sqlText, sqlValues)
+  .then((dbRes) => {
+    res.sendStatus(200);
+  })
+  .catch((dbErr) => {
+    console.error('DELETE database error', dbErr)
+    res.sendStatus(500);
+  })
+})
+
 module.exports = router;

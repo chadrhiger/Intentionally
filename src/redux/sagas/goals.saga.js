@@ -41,12 +41,13 @@ function* createGoal(action) {
 
 function* deleteGoal(action) {
   try {
+    // console.log('action.payload is:', action.payload);
     yield axios({
       method: 'DELETE',
-      url: `/goals/${action.payload}`
+      url: `/api/goals/${action.payload}`
     })
     yield put({
-      type: 'DELETE_GOAL'
+      type: 'FETCH_GOALS'
     })
   } catch (err) {
     console.log(err)
