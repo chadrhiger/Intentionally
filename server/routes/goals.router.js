@@ -61,4 +61,27 @@ router.delete('/:id', (req, res) => {
   })
 })
 
+router.put('/:id', (req, res) => {
+  console.log(req.body);
+  const sqlText = `
+  update goals
+	set 
+		text = $1
+ 	where id = $2;
+  `;
+  const sqlValues = [
+    req.body.text,
+    req.params.id
+  ];
+
+  pool.query(sqlText, sqlValues)
+  .then((dbRes) => {
+    res.sendStatus(200);
+  })
+  .catch((dbErr) => {
+    console.log('UPDATE database error', dbErr);
+    res.sendStatus(500);
+  });
+})
+
 module.exports = router;

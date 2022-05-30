@@ -21,39 +21,27 @@ function GoalsPage() {
     history.push('/addGoal')
   }
 
-  // const handleDelete = () => {
-  //   console.log('goal.id', goals.id);
-
-  //   dispatch({
-  //     type: 'DELETE_GOAL',
-  //     payload: goals.id,
-  //   })
-  // }
-
   return (
     <div className="container">
-      <>
-        <h5>Goals Page!!!</h5>
-        <ul>
+      <thead>
+        <th>Goals Page!!!</th>
+        <th>
+          <button
+            onClick={handleAddGoalClick}
+          >Add Goal!</button>
+        </th>
+      </thead>
+      <tr>
+        <td>
           {goals.map((goal) => {
             return (
               <>
-                {/* <li key={goal.id}>{goal.text}</li> */}
-                {/* <button >edit</button> */}
-                <GoalItem key={goal.id} goal={goal}/>
-                {/* <button
-                  onClick={() => handleDelete()}>
-                  delete
-                </button> */}
+                <GoalItem key={goal.id} goal={goal} />
               </>
             )
           })}
-        </ul>
-        <button
-          onClick={handleAddGoalClick}
-        >Add Goal!</button>
-
-      </>
+        </td>
+      </tr>
     </div>
   );
 }

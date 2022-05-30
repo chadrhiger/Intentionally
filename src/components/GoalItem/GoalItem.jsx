@@ -3,8 +3,8 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
-function GoalItem({goal}) {
- 
+function GoalItem({ goal }) {
+
   const history = useHistory();
   const dispatch = useDispatch();
 
@@ -17,10 +17,19 @@ function GoalItem({goal}) {
   }
 
   return (
-    <div key={goal.id} >
-      <h3>{goal.text}</h3>
-      <button onClick={handleDelete} >delete</button>
-    </div>
+    <tr key={goal.id} >
+      <td>{goal.text}</td>
+      <td>
+        <button
+          onClick={handleDelete} >
+          delete
+        </button>
+        <button
+          onClick={() => history.push(`/editGoal/${goal.id}`)}>
+          edit
+        </button>
+      </td>
+    </tr>
   )
 
 }
