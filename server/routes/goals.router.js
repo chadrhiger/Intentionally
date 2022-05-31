@@ -9,7 +9,7 @@ router.get('/', (req, res) => {
 	WHERE user_id=$1 
 	ORDER BY "inserted_at" ASC;
 `;
-const sqlValues = [req.user.id];
+  const sqlValues = [req.user.id];
   pool.query(sqlQuery, sqlValues)
     .then(result => {
       res.send(result.rows);
@@ -20,11 +20,25 @@ const sqlValues = [req.user.id];
     })
 });
 
+router.get('/:id', (req, res) => {
+  const sqlText = `
+    SELECT * FROM goals
+      WHERE id=$1;
+    `;
+  const sqlValues = [req.params.id];
+  pool.query(sqlText, sqlValues)
+  .then((dbRes) => {
+    const theGoal = dbRes.rows[0];
+    console.log('error in the GET /goals/:id', dbErr);
+    res.sendStatus(500);
+  });
+});
+
 // POST route that uses SQL query to insert 
 // a new goal into the db
 router.post('/', (req, res) => {
   console.log('req.body:', req.body);
-  const insertGoalQuery =`
+  const insertGoalQuery = `
   INSERT INTO "goals" ("text", "user_id")
   VALUES ($1, $2)
   RETURNING "id";
@@ -32,13 +46,13 @@ router.post('/', (req, res) => {
   pool.query(insertGoalQuery, [
     req.body.text, req.user.id
   ])
-  .then((result) => {
-    console.log('New Goal Id:', result.rows[0].id); 
-  })
-  .catch((err) => {
-    console.log(err);
-    res.sendStatus(500);
-  });
+    .then((result) => {
+      console.log('New Goal Id:', result.rows[0].id);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.sendStatus(500);
+    });
 
 });
 
@@ -52,13 +66,13 @@ router.delete('/:id', (req, res) => {
     req.params.id
   ]
   pool.query(sqlText, sqlValues)
-  .then((dbRes) => {
-    res.sendStatus(200);
-  })
-  .catch((dbErr) => {
-    console.error('DELETE database error', dbErr)
-    res.sendStatus(500);
-  })
+    .then((dbRes) => {
+      res.sendStatus(200);
+    })
+    .catch((dbErr) => {
+      console.error('DELETE database error', dbErr)
+      res.sendStatus(500);
+    })
 })
 
 router.put('/:id', (req, res) => {
@@ -75,13 +89,13 @@ router.put('/:id', (req, res) => {
   ];
 
   pool.query(sqlText, sqlValues)
-  .then((dbRes) => {
-    res.sendStatus(200);
-  })
-  .catch((dbErr) => {
-    console.log('UPDATE database error', dbErr);
-    res.sendStatus(500);
-  });
+    .then((dbRes) => {
+      res.sendStatus(200);
+    })
+    .catch((dbErr) => {
+      console.log('UPDATE database error', dbErr);
+      res.sendStatus(500);
+    });
 })
 
 module.exports = router;

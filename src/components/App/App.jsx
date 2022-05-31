@@ -83,7 +83,7 @@ function App() {
           <ProtectedRoute
             // logged in shows AddGoalPage else shows LoginPage
             exact
-            path="/editGoal"
+            path="/editGoal/:id"
           >
             <EditGoalForm />
           </ProtectedRoute>

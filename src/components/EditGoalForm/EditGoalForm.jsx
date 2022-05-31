@@ -6,13 +6,14 @@ import { useDispatch, useSelector } from 'react-redux';
 
 function EditGoalForm() {
   useEffect(() => {
-    dispatchEvent({
+    console.log('editGoal is:', editGoal);
+    dispatch({
       type: 'FETCH_ONE_GOAL',
       payload: goalId
     })
   }, [])
 
-  const editGoal = useSelector(store => store.editGoal);
+  const editGoal = useSelector(store => store.goalsReducer);
 
   const params = useParams();
   const goalId = params.id;
@@ -32,11 +33,10 @@ function EditGoalForm() {
   return (
     <div>
       <h2>Edit Goal:</h2>
-
       <form onSubmit={handleSubmit}>
         <input
-          placeholder='{goal.text}' // goal to be edited should be in the input field on click
-          value={editStudent.github_name}
+          placeholder={editGoal.text} // goal to be edited should be in the input field on click
+          value={editGoal.text}
           onChange={(e) => {
             dispatch({
               type: 'EDIT_GOAL',
@@ -47,6 +47,10 @@ function EditGoalForm() {
         />
         <button>Update Goal</button>
       </form>
+      <button
+        onClick={() => history.push('/')}>
+        Cancel
+      </button>
     </div>
   );
 }

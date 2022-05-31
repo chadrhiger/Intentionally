@@ -20,6 +20,20 @@ function* fetchGoals() {
   }
 }
 
+function* fetchOneGoal(action) {
+  console.log('fetchOneGoal saga function hit');
+  try {
+    const goalId = action.payload;
+    const response = yield axios({
+      method: 'GET',
+      url: `/goals/${goalId}`
+    })
+    console.log(response.data);
+  } catch(error) {
+    console.log(error);
+  }
+}
+
 function* createGoal(action) {
   console.log('createGoal saga function, doodz!');
   // POST new goal to DB
@@ -53,11 +67,34 @@ function* deleteGoal(action) {
     console.log(err)
   }}
 
+  function* updateGoal(action) {
+    try {
+      const goalToEdit = action.payload;
+      console.log('goalToEdit in updateGoal', goalToEdit);
+      const response = yield axios({
+        method: 'PUT',
+        url: `/goals/${goalToEdit.id}`,
+        data: {
+          text: goalToEdit.text      
+        }
+      })
+      yield put({
+        type: 'FETCH_GOALS'
+      })
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+
+
 function* goalsSaga() {
   // corresponds to dispatch sent from component GoalsPage.jsx
   yield takeLatest('FETCH_GOALS', fetchGoals);
   yield takeLatest('CREATE_GOAL', createGoal);
   yield takeLatest('DELETE_GOAL', deleteGoal);
+  yield takeLatest('UPDATE_GOAL', updateGoal);
+  yield takeLatest('FETCH_ONE_GOAL', fetchOneGoal);
 }
 
 export default goalsSaga;
