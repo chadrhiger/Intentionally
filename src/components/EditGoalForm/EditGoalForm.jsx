@@ -17,6 +17,7 @@ function EditGoalForm() {
 
   const params = useParams();
   const goalId = params.id;
+  console.log('params.id is:', params.id);
 
   const dispatch = useDispatch();
   const history = useHistory();
@@ -28,6 +29,7 @@ function EditGoalForm() {
       payload: editGoal
     })
     history.push('/');
+    console.log('editGoal **********************', editGoal);
   }
 
   return (
@@ -39,7 +41,7 @@ function EditGoalForm() {
           value={editGoal.text}
           onChange={(e) => {
             dispatch({
-              type: 'EDIT_GOAL',
+              type: 'EDIT_GOAL_TEXT',
               // 'EDIT_GITHUB_USERNAME',
               payload: e.target.value
             })

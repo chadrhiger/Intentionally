@@ -29,9 +29,13 @@ router.get('/:id', (req, res) => {
   pool.query(sqlText, sqlValues)
   .then((dbRes) => {
     const theGoal = dbRes.rows[0];
-    console.log('error in the GET /goals/:id', dbErr);
+    // console.log('theGoal', theGoal);
+    res.send(theGoal);
+  })
+  .catch((dbErr) => {
+    console.log('error in GET /goals/:id', dbErr);
     res.sendStatus(500);
-  });
+  })
 });
 
 // POST route that uses SQL query to insert 
@@ -76,7 +80,7 @@ router.delete('/:id', (req, res) => {
 })
 
 router.put('/:id', (req, res) => {
-  console.log(req.body);
+  console.log(' in goals router', req.body);
   const sqlText = `
   update goals
 	set 

@@ -26,7 +26,7 @@ function* fetchOneGoal(action) {
     const goalId = action.payload;
     const response = yield axios({
       method: 'GET',
-      url: `/goals/${goalId}`
+      url: `/api/goals/${goalId}`
     })
     console.log(response.data);
   } catch(error) {
@@ -71,9 +71,11 @@ function* deleteGoal(action) {
     try {
       const goalToEdit = action.payload;
       console.log('goalToEdit in updateGoal', goalToEdit);
+      console.log('goalToEdit.text in updateGoal', goalToEdit.text);
+
       const response = yield axios({
         method: 'PUT',
-        url: `/goals/${goalToEdit.id}`,
+        url: `/api/goals/${goalToEdit.id}`,
         data: {
           text: goalToEdit.text      
         }
@@ -85,8 +87,6 @@ function* deleteGoal(action) {
       console.log(error);
     }
   }
-
-
 
 function* goalsSaga() {
   // corresponds to dispatch sent from component GoalsPage.jsx
