@@ -24,11 +24,16 @@ function* fetchOneGoal(action) {
   console.log('fetchOneGoal saga function hit');
   try {
     const goalId = action.payload;
+    console.log('action.payload is:', action.payload);
     const response = yield axios({
       method: 'GET',
       url: `/api/goals/${goalId}`
     })
     console.log(response.data);
+    yield put({
+      type: 'SET_EDIT_GOAL',
+      payload: response.data
+    })
   } catch(error) {
     console.log(error);
   }
@@ -71,14 +76,12 @@ function* deleteGoal(action) {
     try {
       const goalToEdit = action.payload;
       console.log('goalToEdit in updateGoal', goalToEdit);
-      console.log('goalToEdit.text in updateGoal', goalToEdit.text);
+      console.log('goalToEdit.id in updateGoal', goalToEdit.id);
 
       const response = yield axios({
         method: 'PUT',
         url: `/api/goals/${goalToEdit.id}`,
-        data: {
-          text: goalToEdit.text      
-        }
+        data: goalToEdit
       })
       yield put({
         type: 'FETCH_GOALS'

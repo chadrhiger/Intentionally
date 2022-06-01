@@ -13,7 +13,7 @@ function EditGoalForm() {
     })
   }, [])
 
-  const editGoal = useSelector(store => store.goalsReducer);
+  const editGoal = useSelector(store => store.editGoal);
 
   const params = useParams();
   const goalId = params.id;
@@ -28,7 +28,7 @@ function EditGoalForm() {
       type: 'UPDATE_GOAL',
       payload: editGoal
     })
-    history.push('/');
+    history.push('/goals');
     console.log('editGoal **********************', editGoal);
   }
 

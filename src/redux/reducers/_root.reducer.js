@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 import errors from './errors.reducer';
 import user from './user.reducer';
 import goalsReducer from './goals.reducer';
-import editGoal from './editGoals.reducer';
+import editGoal from './editGoal.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
