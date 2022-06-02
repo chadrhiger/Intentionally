@@ -14,13 +14,16 @@ function UserPage() {
   }
 
   const mySessionClick = () => {
-    history.push('/session');
+    history.push('/user');
     }
   return (
     <div className="container">
       <h2>Hi, {user.username}!</h2>
+      <p>What would you like to do?</p>
       <button onClick={mySessionClick}>Start Session</button>
+      <br></br>
       <button onClick={myGoalsClick}>My Goals</button>
+      <br></br>
       <LogOutButton className="btn" />
     </div>
   );
