@@ -1,9 +1,9 @@
 import React from 'react';
 
-// This is one of our simplest components
-// It doesn't have local state,
-// It doesn't dispatch any redux actions or display any part of redux state
-// or even care what the redux state is'
+// This page is available to anyone, 
+// regardless of whether they are logged in or not. 
+// Write something about the app (what it's for)
+// and yourself (who you are and why you built it).
 
 function AboutPage() {
   return (

@@ -37,10 +37,10 @@ function AddGoalPage() {
           name="add new goal here"
           value={addGoal}
           onChange={(event) => setAddGoal(event.target.value)} />
-        <button onClick={handleSubmit}
+        <button className="btn" onClick={handleSubmit}
         >Submit New Goal</button>
       </form>
-      <button onClick={handleGoalsClick}>Back to Goals</button>
+      <button className="btn" onClick={handleGoalsClick}>Back to Goals</button>
     </>
   );
 }
