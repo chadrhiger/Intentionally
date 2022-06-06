@@ -20,11 +20,11 @@ function GoalItem({ goal }) {
     <tr key={goal.id} >
       <td>{goal.text}</td>
       <td>
-        <button
+        <button 
           onClick={handleDelete} >
           delete
         </button>
-        <button
+        <button 
           onClick={() => history.push(`/editGoal/${goal.id}`)}>
           edit
         </button>
