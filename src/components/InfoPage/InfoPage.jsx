@@ -1,14 +1,12 @@
 import React from 'react';
 
-// This is one of our simplest components
-// It doesn't have local state
-// It doesn't dispatch any redux actions or display any part of redux state
-// or even care what the redux state is
+// Info about the app, maybe some suggested goals and 
+// best practices on how to use it.
 
 function InfoPage() {
   return (
     <div className="container">
-      <p>Info Page</p>
+      <p>Info</p>
     </div>
   );
 }

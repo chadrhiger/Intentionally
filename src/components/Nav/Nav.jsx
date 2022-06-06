@@ -28,6 +28,14 @@ function Nav() {
               Home
             </Link>
 
+            <Link className="navLink" to="/goals">
+              Goals
+            </Link>
+
+            <Link className="navLink" to="/session">
+              Session
+            </Link>
+
             <Link className="navLink" to="/info">
               Info Page
             </Link>
