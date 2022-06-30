@@ -1,4 +1,5 @@
 
+
 const editGoal = (state = {}, action) => {
   if (action.type === 'SET_EDIT_GOAL') {
     return action.payload;
