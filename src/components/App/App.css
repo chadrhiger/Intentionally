@@ -2,11 +2,14 @@ html,
 body,
 #react-root {
   height: 100%;
+  background-color: #F9F8ED;
+
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: Geneva, Arial, Helvetica, sans-serif, Tahoma, Verdana, sans-serif;
   margin: 0px;
+  text-align: center;
 }
 
 img {
@@ -19,7 +22,7 @@ Container
 -------------------------------------------------------------------------------- */
 
 .container {
-  padding: 20px;
+  padding: 40px;
   text-align: center;
 }
 
@@ -29,15 +32,16 @@ Button
 
 .btn {
   display: inline-block;
-  padding: 10px 20px;
-  border-color: #23689B;
+  padding: 30px 40px;
+  border-color: #FFF1BC;
   border-width: 2px 2px 4px;
   border-radius: 4px;
-  background-color: #487E95;
+  background-color: #6A9C78;
   color: #f8f8f8;
   font-size: 1.1rem;
   outline: 0;
   cursor: pointer;
+  border-radius: 10px;
 }
 
 .btn_sizeMin {
@@ -56,7 +60,7 @@ Button
 }
 
 .btn:hover {
-  background-color: #D9DAB0;
+  background-color: #C4E3CB;
   text-decoration: none;
 }
 
@@ -73,8 +77,8 @@ Button
 
 .btn_asLink:hover {
   background-color: transparent;
-  border-color: #008183;
-  color: #008183;
+  border-color: #EACF79;
+  color: #638CCC;
 }
 
 /* --------------------------------------------------------------------------------
@@ -111,3 +115,9 @@ input {
   margin: 5px;
   margin-bottom: 10px;
 }
+
+/* 
+.paragraph {
+  text-align: center;
+  width: 40%;
+} */

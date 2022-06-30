@@ -14,7 +14,7 @@ function UserPage() {
   }
 
   const mySessionClick = () => {
-    history.push('/user');
+    history.push('/session');
     }
   return (
     <div className="container">

@@ -23,12 +23,12 @@ function SessionItem({currentGoal, goToNextGoal}) {
   }
 
   return (
-    <div 
+    <div className='container'
     // key={goal.id} 
     >
       <h3>{currentGoal.text}</h3>
-      <button onClick={goToNextGoal}>Yes</button>
-      <button onClick={goToNextGoal}>No</button>
+      <button className='btn' onClick={goToNextGoal}>Yes</button>
+      <button className='btn' onClick={goToNextGoal}>No</button>
       <br></br>     
           {/* <button onClick={handleYesClick} className="btn">
             yes
