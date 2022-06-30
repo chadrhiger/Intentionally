@@ -1,9 +1,7 @@
-// GoalPage.jsx
-
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import GoalItem from '../GoalItem/GoalItem';
+
 
 function GoalsPage() {
   console.log('in GoalsPage()');
@@ -25,25 +23,25 @@ function GoalsPage() {
 
   return (
     <div className="container">
-      <thead>
-        <th>Goals Page!!!</th>
-        <th>
-          <button
-            onClick={handleAddGoalClick}
-          >Add Goal!</button>
-        </th>
-      </thead>
-      <tr>
-        <td>
+      <>
+        <h5>Goals Page!!!</h5>
+        <ul>
           {goals.map((goal) => {
             return (
               <>
-                <GoalItem key={goal.id} goal={goal} />
+                <li key={goal.id}>{goal.text}</li>
+                <button >edit</button>
+                <button>delete</button>
+
               </>
             )
           })}
-        </td>
-      </tr>
+        </ul>
+        <button
+          onClick={handleAddGoalClick}
+        >Add Goal!</button>
+
+      </>
     </div>
   );
 }

@@ -9,9 +9,6 @@ const goalsReducer = (state = [], action) => {
   }  
 }
 
-
-
-
 // goals will be on the redux state at:
 // goals.user
 export default goalsReducer;

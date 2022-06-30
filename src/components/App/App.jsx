@@ -17,8 +17,7 @@ import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserPage/UserPage';
 import GoalsPage from '../GoalsPage/GoalsPage';
 import AddGoalPage from '../AddGoalPage/AddGoalPage';
-import EditGoalForm from '../EditGoalForm/EditGoalForm';
-import SessionPage from '../SessionPage/SessionPage';
+
 import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
@@ -65,7 +64,7 @@ function App() {
           </ProtectedRoute>
 
           <ProtectedRoute
-            // logged in shows GoalsPage 
+            // logged in shows GoalsPage else shows LoginPage
             exact
             path="/goals"
           >
@@ -73,15 +72,7 @@ function App() {
           </ProtectedRoute>
 
           <ProtectedRoute
-            // logged in shows GoalsPage 
-            exact
-            path="/session"
-          >
-            <SessionPage />
-          </ProtectedRoute>
-
-          <ProtectedRoute
-            // logged in shows AddGoalPage 
+            // logged in shows GoalsPage else shows LoginPage
             exact
             path="/addGoal"
           >
@@ -89,15 +80,7 @@ function App() {
           </ProtectedRoute>
 
           <ProtectedRoute
-            // logged in shows EditGoalForm 
-            exact
-            path="/editGoal/:id"
-          >
-            <EditGoalForm />
-          </ProtectedRoute>
-
-          <ProtectedRoute
-            // logged in shows InfoPage 
+            // logged in shows InfoPage else shows LoginPage
             exact
             path="/info"
           >

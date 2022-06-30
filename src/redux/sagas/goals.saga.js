@@ -20,25 +20,6 @@ function* fetchGoals() {
   }
 }
 
-function* fetchOneGoal(action) {
-  console.log('fetchOneGoal saga function hit');
-  try {
-    const goalId = action.payload;
-    console.log('action.payload is:', action.payload);
-    const response = yield axios({
-      method: 'GET',
-      url: `/api/goals/${goalId}`
-    })
-    console.log(response.data);
-    yield put({
-      type: 'SET_EDIT_GOAL',
-      payload: response.data
-    })
-  } catch(error) {
-    console.log(error);
-  }
-}
-
 function* createGoal(action) {
   console.log('createGoal saga function, doodz!');
   // POST new goal to DB
@@ -60,44 +41,22 @@ function* createGoal(action) {
 
 function* deleteGoal(action) {
   try {
-    // console.log('action.payload is:', action.payload);
     yield axios({
       method: 'DELETE',
-      url: `/api/goals/${action.payload}`
+      url: `/goals/${action.payload}`
     })
     yield put({
-      type: 'FETCH_GOALS'
+      type: 'DELETE_GOAL'
     })
   } catch (err) {
     console.log(err)
   }}
-
-  function* updateGoal(action) {
-    try {
-      const goalToEdit = action.payload;
-      console.log('goalToEdit in updateGoal', goalToEdit);
-      console.log('goalToEdit.id in updateGoal', goalToEdit.id);
-
-      const response = yield axios({
-        method: 'PUT',
-        url: `/api/goals/${goalToEdit.id}`,
-        data: goalToEdit
-      })
-      yield put({
-        type: 'FETCH_GOALS'
-      })
-    } catch (error) {
-      console.log(error);
-    }
-  }
 
 function* goalsSaga() {
   // corresponds to dispatch sent from component GoalsPage.jsx
   yield takeLatest('FETCH_GOALS', fetchGoals);
   yield takeLatest('CREATE_GOAL', createGoal);
   yield takeLatest('DELETE_GOAL', deleteGoal);
-  yield takeLatest('UPDATE_GOAL', updateGoal);
-  yield takeLatest('FETCH_ONE_GOAL', fetchOneGoal);
 }
 
 export default goalsSaga;
