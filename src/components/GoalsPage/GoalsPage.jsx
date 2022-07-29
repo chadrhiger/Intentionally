@@ -29,6 +29,7 @@ function GoalsPage() {
         <th>Goals Page!!!</th>
         <th>
           <button
+          className='btn'
             onClick={handleAddGoalClick}
           >Add Goal!</button>
         </th>
