@@ -9,14 +9,24 @@ To that end, I made this app because I wanted to remember to take the time to li
 With Intentionally, our user is encouraged to create modest, incremental goals or “intentions” toward bringing some small soundness to their mind and body. A minute or two of silent reflection on gratitude. A kindly note-to-self to opt for a healthier food or travel option once in a while. No pressure, just acceptance and encouragement.
 
 
-# Register and Start a Session
-[under construction]
+# Prerequisites
+Before you get started, make sure you have the following software installed on your computer:
 
-# Screenshot
-[under construction]
+Node.js,
+PostrgeSQL,
+and Nodemon
+
+# Setup Instructions
+Create a new database called prime_app.
+Run the queries provided in database.sql.
+Run npm install.
+Start postgres if not running already by using brew services start postgresql.
+Run npm run server.
+Run npm run client.
+Navigate to localhost:3000. This app is formatted for mobile devices but will function well on desktop.
 
 # Technologies Used
-[under construction]
+JavaScript, React.js, Node, Redux, and Redux Sagas
 
 # Thank You!
 Thank you to Prime Digital Academy for giving me the skills to build applications like this one, and specifically the Dahl cohort, for their insight, enthusiasm and support. And thank you for your time and attention!
